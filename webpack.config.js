@@ -1,8 +1,4 @@
 const NODE_ENV = process.env.NODE_ENV;
-const isDev = NODE_ENV === 'development';
-// alternatively, we can use process.argv[1]
-// const isDev = (process.argv[1] || '')
-//                .indexOf('hjs-dev-server') !== -1;
 
 const webpack = require('webpack');
 const fs      = require('fs');
@@ -11,6 +7,8 @@ const path    = require('path'),
       resolve = path.resolve;
 
 const getConfig = require('hjs-webpack');
+
+const isDev = NODE_ENV === 'development';
 
 const root    = resolve(__dirname);
 const src     = join(root, 'src');
