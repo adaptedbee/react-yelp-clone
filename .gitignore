@@ -1,4 +1,8 @@
-node_modules/
-__temp/
-__docs
+node_modules
+config/
 npm-debug.log
+.env
+.awsDetails
+dist/
+__docs/
+__temp/

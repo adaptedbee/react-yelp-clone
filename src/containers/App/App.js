@@ -1,17 +1,31 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
+import React, { PropTypes } from 'react';
+import { Router } from 'react-router';
 
-import styles from './styles.module.css'
+class App extends React.Component {
+  static contextTypes = {
+    router: PropTypes.object
+  }
 
-const App = React.createClass({
-  render: function() {
+  static propTypes = {
+    history: PropTypes.object.isRequired,
+    routes: PropTypes.element.isRequired
+  };
+
+  get content() {
     return (
-      <div className={styles.wrapper}>
-        <i className="fa fa-star"></i>
-        Text text text
-      </div>
+      <Router
+        routes={this.props.routes}
+        history={this.props.history} />
     )
   }
-});
 
-module.exports = App;
+  render () {
+     return (
+       <div style={{ height: '100%' }}>
+         {this.content}
+       </div>
+     )
+   }
+}
+
+export default App;

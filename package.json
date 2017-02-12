@@ -1,18 +1,31 @@
 {
   "name": "react-yelp-clone",
   "version": "1.0.0",
-  "description": "React Yelp Clone",
-  "main": "src/app.js",
+  "description": "",
   "scripts": {
-    "start": "NODE_ENV=development ./node_modules/.bin/hjs-dev-server",
-    "test": "NODE_ENV=test ./node_modules/karma/bin/karma start karma.conf.js"
+    "start": "./node_modules/.bin/cross-env NODE_ENV=development ./node_modules/.bin/hjs-dev-server",
+    "clean": "rimraf dist",
+    "build": "npm run clean && ./node_modules/.bin/cross-env NODE_ENV=production webpack",
+    "publish_pages": "./node_modules/.bin/gh-pages -d dist",
+    "ghpages": "npm run build && npm run publish_pages",
+    "test": "./node_modules/.bin/cross-env NODE_ENV=test ./node_modules/karma/bin/karma start karma.conf.js",
+    "test:watch": "npm run test -- --watch"
   },
   "author": "Mikhail Savotikov <adaptedbee@yandex.ru>",
   "license": "ISC",
+  "dependencies": {
+    "classnames": "^2.2.5",
+    "font-awesome": "^4.7.0",
+    "react": "^15.4.2",
+    "react-dom": "^15.4.2",
+    "react-router": "^3.0.2",
+    "react-router-redux": "^4.0.8"
+  },
   "devDependencies": {
     "autoprefixer": "^6.7.2",
     "babel-core": "^6.22.1",
     "babel-loader": "^6.2.10",
+    "babel-plugin-transform-es2015-modules-umd": "^6.22.0",
     "babel-polyfill": "^6.22.0",
     "babel-preset-es2015": "^6.22.0",
     "babel-preset-react": "^6.22.0",
@@ -21,6 +34,7 @@
     "babel-register": "^6.22.0",
     "chai": "^3.5.0",
     "chai-enzyme": "^0.6.1",
+    "cross-env": "^3.1.4",
     "css-loader": "^0.26.1",
     "cssnano": "^3.10.0",
     "dotenv": "^4.0.0",
@@ -28,10 +42,10 @@
     "expect": "^1.20.2",
     "file-loader": "^0.10.0",
     "hjs-webpack": "^8.4.3",
+    "jasmine-core": "^2.5.2",
     "json-loader": "^0.5.4",
     "karma": "^1.4.1",
     "karma-chai": "^0.1.0",
-    "karma-chrome-launcher": "^2.0.0",
     "karma-jasmine": "^1.1.0",
     "karma-mocha": "^1.3.0",
     "karma-phantomjs-launcher": "^1.0.2",
@@ -47,12 +61,7 @@
     "sinon": "^1.17.7",
     "style-loader": "^0.13.1",
     "url-loader": "^0.5.7",
-    "webpack": "^2.2.1"
-  },
-  "dependencies": {
-    "font-awesome": "^4.7.0",
-    "react": "^15.4.2",
-    "react-dom": "^15.4.2",
-    "react-router": "^3.0.2"
+    "webpack": "^2.2.1",
+    "yargs": "^6.6.0"
   }
 }

@@ -1,9 +1,8 @@
 var argv = require('yargs').argv;
-var path = require('path');
 
 var webpackConfig = require('./webpack.config');
 
-module.exports = function(config) {
+module.exports = function (config) {
   config.set({
     basePath: '',
     frameworks: ['mocha', 'chai'],
@@ -13,7 +12,7 @@ module.exports = function(config) {
 
     preprocessors: {
       // add webpack as preprocessor
-      'tests.webpack.js': ['webpack', 'sourcemap'],
+      'tests.webpack.js': ['webpack', 'sourcemap']
     },
 
     webpack: webpackConfig,
@@ -36,5 +35,5 @@ module.exports = function(config) {
     logLevel: config.LOG_INFO,
     browsers: ['PhantomJS'],
     singleRun: !argv.watch
-  })
+  });
 };
