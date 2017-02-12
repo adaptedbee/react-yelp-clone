@@ -1,3 +1,4 @@
 node_modules/
 __temp/
 __docs
+npm-debug.log
